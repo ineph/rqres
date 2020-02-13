@@ -1,0 +1,38 @@
+<a routerLink="/novo-usuario">
+    <h4>Cadastrar Usuario</h4>
+</a>
+
+<div *ngIf="paginacaoUsuarios.data">
+    <h1>Usuarios:</h1>
+        <ul >
+            <li *ngFor="let usuario of paginacaoUsuarios.data" style="list-style-type: none;">
+                <a [routerLink]="['/usuario', usuario.id]">
+                        <h3 style="margin: 0%;">
+                            {{usuario.first_name}} {{usuario.last_name}}
+                        </h3>
+                    {{usuario.email}}<br>
+                    {{usuario.cargo}}<br>
+                    <img [src]="usuario.avatar" [alt]="usuario.first_name" [title]="usuario.first_name">
+                    <br>
+                    <br>
+                </a><button (click)="apagarUsuario(usuario.id)">Apagar usuario</button>
+
+                <alert *ngIf="usuario.id === usuarioApagado" [hidden]="!usuarioApagado" type="success">
+                    <strong>Sucesso!</strong> Usuário apagado
+                  </alert>
+                  <br>
+                  <br>                  
+            </li>
+        </ul>
+</div>
+<button
+*ngFor="let pagina of paginacaoUsuarios.paginas"
+(click)="paginas(pagina)">
+    {{pagina}}
+</button><br>
+<!-- <button [hidden]="paginacaoUsuarios.page >= paginacaoUsuarios.total_pages" (click)="proximaPagina()">Proximo</button> -->
+
+
+<a href="https://info.flagcounter.com/AUE1">
+    <img src="https://s04.flagcounter.com/count/AUE1/bg_000000/txt_FFFFFF/border_CCCCCC/columns_8/maxflags_110/viewers_Visitantes/labels_1/pageviews_1/flags_0/percent_0/"
+    alt="Flag Counter"></a>

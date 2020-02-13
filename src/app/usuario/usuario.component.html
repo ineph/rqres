@@ -1,0 +1,25 @@
+<h1 style="margin: 0%;">{{usuario.first_name}} {{usuario.last_name}}</h1>
+<img [src]="usuario.avatar"
+[alt]="usuario.first_name + ' ' + usuario.last_name"
+[title]="usuario.first_name + ' ' + usuario.last_name"><br>
+<b>email:</b> {{usuario.email}}<br>
+<b>ID de usuário:</b> {{usuario.id}}<br>
+<br>
+
+<button (click)="habilitarEdicao()">{{editando ? 'Editando usuario' : 'Editar Usuario'}}</button>
+
+<div *ngIf="editando">
+    <input type="text" placeholder="Nome" [(ngModel)]="inputNomeUsuario"><br>
+    <input type="text" placeholder="Cargo" [(ngModel)]="inputCargoUsuario"><br>
+    <button type="submit" (click)="submit()">Confirmar</button>
+    <button (click)="editando = false" (click)="respostaPut = undefined">Cancelar</button>
+</div>
+
+<div *ngIf="respostaPut">
+    <h3 style="margin: 0%;">Sucesso</h3>
+    Usuario {{usuario.id}} editado com sucesso<br>
+    <br>
+    Nome: {{respostaPut.name}}<br>
+    Cargo: {{respostaPut.job}}<br>
+    Editado em: {{respostaPut.updatedAt}}
+</div>

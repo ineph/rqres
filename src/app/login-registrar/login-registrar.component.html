@@ -1,0 +1,11 @@
+<a routerLink="/usuarios">{{idiomaAtual ? por[0] : eng[0]}}</a>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>{{rotaAtiva === 'login' ? 'Login' : 'Registrar-se'}}</h1>
+            <input id="inputEmail" type="email" placeholder="e-mail" [(ngModel)]="email">
+            <input id="inputSenha" type="password" [placeholder]="idiomaAtual ? por[3] : eng[3]" [(ngModel)]="senha"><br>
+            <button type="submit" (click)="onSubmit()">{{idiomaAtual ? por[4] : eng[4]}}</button>
+        </div>
+    </div>
+</div>
